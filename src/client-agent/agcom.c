@@ -92,6 +92,7 @@ size_t agcom_getconfig(const char * section, char ** output) {
         } else {
             goto error;
         }
+#ifndef WIN32
     } else if (strcmp(section, "anti_tampering") == 0){
         if (cfg = getAntiTamperingConfig(), cfg) {
             *output = strdup("ok");
@@ -103,6 +104,7 @@ size_t agcom_getconfig(const char * section, char ** output) {
         } else {
             goto error;
         }
+#endif
     } else {
         goto error;
     }
