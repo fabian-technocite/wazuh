@@ -69,13 +69,13 @@ namespace Utils
 
     static bool replaceAll(std::string& data, const std::string& toSearch, const std::string& toReplace)
     {
-        auto pos {data.find(toSearch)};
-        const auto ret {std::string::npos != pos};
+        auto pos{data.find(toSearch)};
+        const auto ret{std::string::npos != pos};
 
         while (std::string::npos != pos)
         {
             data.replace(pos, toSearch.size(), toReplace);
-            pos = data.find(toSearch, pos);
+            pos = data.find(toSearch, pos + toReplace.size());
         }
 
         return ret;
