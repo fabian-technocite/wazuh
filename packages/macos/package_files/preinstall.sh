@@ -24,10 +24,10 @@ if [ -d "${DIR}" ]; then
     touch "${DIR}/WAZUH_PKG_UPGRADE"
     upgrade="true"
 
-    if ${DIR}/bin/wazuh-control status | grep "is running" > /dev/null 2>&1; then
+    if  | grep "is running" > /dev/null 2>&1; then
         touch "${DIR}/WAZUH_RESTART"
         restart="true"
-    elif ${DIR}/bin/ossec-control status | grep "is running" > /dev/null 2>&1; then
+    elif  | grep "is running" > /dev/null 2>&1; then
         touch "${DIR}/WAZUH_RESTART"
         restart="true"
     fi
@@ -36,10 +36,8 @@ fi
 # Stops the agent before upgrading it
 echo "Stopping the agent before upgrading it."
 
-if [ -f ${DIR}/bin/wazuh-control ]; then
-    ${DIR}/bin/wazuh-control stop
-elif [ -f ${DIR}/bin/ossec-control ]; then
-    ${DIR}/bin/ossec-control stop
+if [ -f  ]; then
+elif [ -f  ]; then
 fi
 
 if [ -n "${upgrade}" ]; then
@@ -114,10 +112,8 @@ if [[ ${new_uid} != ${new_gid} ]]
 fi
 
 # Stops the agent before upgrading it
-if [ -f ${DIR}/bin/wazuh-control ]; then
-    ${DIR}/bin/wazuh-control stop
-elif [ -f ${DIR}/bin/ossec-control ]; then
-    ${DIR}/bin/ossec-control stop
+if [ -f  ]; then
+elif [ -f  ]; then
 fi
 
 # Creating the group

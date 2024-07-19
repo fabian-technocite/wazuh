@@ -94,7 +94,7 @@ case "$1" in
 
     # Generation auto-signed certificate if not exists
     if [ ! -f "${DIR}/etc/sslmanager.key" ] && [ ! -f "${DIR}/etc/sslmanager.cert" ]; then
-        ${DIR}/bin/wazuh-authd -C 365 -B 2048 -S "/C=US/ST=California/CN=Wazuh/" -K ${DIR}/etc/sslmanager.key -X ${DIR}/etc/sslmanager.cert 2>/dev/null
+
     fi
 
     chmod 640 ${DIR}/etc/sslmanager.cert ${DIR}/etc/sslmanager.key > /dev/null 2>&1 || true
@@ -279,7 +279,7 @@ case "$1" in
             elif command -v service > /dev/null 2>&1 ; then
                 service wazuh-manager restart > /dev/null 2>&1
             else
-                ${DIR}/bin/wazuh-control restart > /dev/null 2>&1
+                
             fi
         fi
     fi
