@@ -194,7 +194,10 @@ class NetworkSolarisInterface final : public INetworkInterfaceWrapper
 
                 for (auto line : lines)
                 {
-                    Utils::replaceAll(line, "  ", " ");
+                    while (Utils::replaceAll(line, "  ", " "))
+                    {
+                    }
+
                     const auto fields { Utils::split(line, ' ') };
 
                     if (fields.size() == ROUTING_SIZE_FIELDS && fields.front().compare("default") == 0)
@@ -296,7 +299,11 @@ class NetworkSolarisInterface final : public INetworkInterfaceWrapper
                     for (auto& line : lines)
                     {
                         Utils::replaceAll(line, "\t", " ");
-                        Utils::replaceAll(line, "  ", " ");
+
+                        while (Utils::replaceAll(line, "  ", " "))
+                        {
+                        }
+
                         auto fields { Utils::split(line, ' ') };
 
                         value = std::stoi(fields.back(), &valueSize);
@@ -352,7 +359,10 @@ class NetworkSolarisInterface final : public INetworkInterfaceWrapper
                 for (auto line : lines)
                 {
                     Utils::replaceAll(line, "\t", "");
-                    Utils::replaceAll(line, "  ", " ");
+
+                    while (Utils::replaceAll(line, "  ", " "))
+                    {
+                    }
 
                     if (headers.size() == 0)
                     {
